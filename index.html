@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaHash Pro - Free Instagram Hashtag Generator 2024</title>
+    <meta name="description" content="Generate high-performance Instagram/TikTok hashtags with AI-powered analytics. Boost engagement with our free 2024 hashtag generator!">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="InstaHash Pro - AI Hashtag Generator">
+    <meta property="og:description" content="Generate 30+ optimized hashtags instantly with engagement analytics">
+    <meta property="og:image" content="https://example.com/instahash-thumbnail.jpg">
+    <style>
+        :root {
+            --gradient: linear-gradient(45deg, #ff6b6b, #ff8e53, #ff6b6b);
+            --main-bg: #fafafa;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--main-bg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin: 40px 0;
+            background-image: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #keyword {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        button {
+            background-image: var(--gradient);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+        }
+
+        .hashtag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .hashtag-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .hashtag-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .engagement {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .ad-banner {
+            background: #f0f0f0;
+            height: 100px;
+            margin: 20px 0;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+        }
+
+        .sponsored-tag {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff6b6b;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (min-width: 768px) {
+            .hashtag-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">InstaHash Pro 🔥</h1>
+        
+        <input type="text" id="keyword" placeholder="Enter your topic (e.g., fitness, travel)...">
+        <button onclick="generateHashtags()">Generate Hashtags 🚀</button>
+        
+        <div class="ad-banner">Your Ad Here</div>
+        
+        <div id="results"></div>
+        
+        <div class="affiliate">
+            <p>🚀 Boost your growth with <a href="https://example.com/partner-link">Later.com</a> (20% off)!</p>
+        </div>
+    </div>
+
+    <script>
+        // Preloaded Data
+        const hashtags = {
+            "fitness": [
+                { tag: "#FitnessGoals", posts: "2.1M", engagement: "18%" },
+                { tag: "#GymLife", posts: "1.5M", engagement: "15%" },
+                { tag: "#WorkoutMotivation", posts: "890K", engagement: "22%" }
+            ],
+            "travel": [
+                { tag: "#Wanderlust", posts: "3.4M", engagement: "19%" },
+                { tag: "#TravelGoals", posts: "2.8M", engagement: "17%" }
+            ]
+        };
+
+        const trending = ["#Viral2024", "#ExplorePage", "#ReelsMagic"];
+        const sponsored = ["#VisitParis", "#ShopLocal", "#SummerDeals"];
+
+        // AI Modifier Suffixes/Prefixes
+        const modifiers = ["Goals", "Hacks", "Lifestyle", "Daily", "ProTips", "Essentials"];
+
+        function simulateLoading() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div class="loader"></div>';
+            setTimeout(() => {}, 1500);
+        }
+
+        function generateHashtags() {
+            simulateLoading();
+            setTimeout(() => {
+                const keyword = document.getElementById('keyword').value.toLowerCase();
+                let generatedTags = [];
+                
+                // Exact Match
+                if (hashtags[keyword]) {
+                    generatedTags = hashtags[keyword];
+                } else {
+                    // AI-generated variations
+                    modifiers.forEach(mod => {
+                        generatedTags.push({
+                            tag: `#${capitalize(keyword)}${mod}`,
+                            posts: `${Math.floor(Math.random() * 900 + 100)}K`,
+                            engagement: `${Math.floor(Math.random() * 7) + 18}%`
+                        });
+                    });
+                }
+
+                // Add trending and sponsored
+                generatedTags = generatedTags.concat(trending.map(tag => ({
+                    tag,
+                    posts: "Trending",
+                    engagement: "🔥"
+                })));
+
+                sponsored.forEach(tag => {
+                    generatedTags.push({
+                        tag,
+                        posts: "Sponsored",
+                        engagement: "⭐"
+                    });
+                });
+
+                // Sort and slice
+                generatedTags = generatedTags.sort(() => Math.random() - 0.5).slice(0, 30);
+
+                displayResults(generatedTags);
+            }, 1500);
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function displayResults(tags) {
+            const groups = {
+                "Most Popular": tags.slice(0, 10),
+                "High Engagement": tags.slice(10, 20),
+                "Niche Tags": tags.slice(20, 30)
+            };
+
+            let html = '<button onclick="copyToClipboard()" style="margin: 20px 0;">Copy All 📋</button>';
+            
+            Object.entries(groups).forEach(([title, group]) => {
+                html += `<h3>${title}</h3><div class="hashtag-grid">`;
+                group.forEach(tag => {
+                    html += `
+                        <div class="hashtag-card ${tag.posts === 'Sponsored' ? 'sponsored-tag' : ''}">
+                            <div class="tag">${tag.tag}</div>
+                            <div class="engagement">${tag.posts} posts • ${tag.engagement} engagement</div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            });
+
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function copyToClipboard() {
+            const tags = Array.from(document.querySelectorAll('.tag'))
+                .map(tag => tag.innerText).join(' ');
+            
+            navigator.clipboard.writeText(tags).then(() => {
+                alert('Hashtags copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
